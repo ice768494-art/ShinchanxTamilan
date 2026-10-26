@@ -1,27 +1,28 @@
-# SHINCHANxTAMILAN Hacker Portfolio
+SHINCHANxTAMILAN — Editable Portfolio
 
-## Run it
-1. Extract the ZIP into a single folder.
-2. Open `index.html` for the animated hacker entry.
-3. Press **CLICK HERE TO CONTINUE** to open `home.html`.
+START HERE
+- Open index.html to view your portfolio. home.html is the same portfolio page.
+- No separate hacker entry screen or 3D intro is used as the homepage anymore.
 
-## Included
-- Matrix-style falling code and terminal boot sequence
-- CSS 3D rotating SXT hologram intro
-- Optional synthesized cyber soundtrack (tap **MUSIC: OFF** to enable; tap again to stop)
-- Neon ripple/flash effects on buttons and links
-- 3D hover tilt on project cards on desktop
-- About Me, Projects, Social links and intro replay sections
+EDIT YOUR ABOUT ME
+1. Open home.html or index.html in a text editor (for example, a code editor app).
+2. Find the section marked "EDIT YOUR ABOUT ME".
+3. Replace the sample paragraph with your own introduction, interests, skills, and goals.
+4. Save the file. Keep both files updated if you want them to remain identical.
 
-## Customize
-Edit `home.html` to update your About Me, project descriptions, and real social/channel links. The soundtrack is generated in the browser using Web Audio, so it needs no external music file and only starts after the visitor presses the music button.
+EDIT PROJECTS AND SOCIAL LINKS
+- Find the MY PROJECTS section and change each project title, description, status, and link.
+- In the CONTACT & LINKS section, replace the example YouTube and Instagram URLs with your real profile links.
+- Keep style.css and script.js in the same folder as the HTML files.
 
-This is a visual portfolio experience, not a real authentication or security system.
+FEATURES
+- Responsive cyber/neon portfolio layout
+- About Me, Projects, and Contact/Links sections
+- Optional browser-generated background music toggle
+- Animated background effects
+
+Music may require a tap to start because browsers restrict automatic audio playback. This is a visual portfolio template, not a secure login system.
 
 
-## Cinematic upgrade
-- CSS-built 3D cyber portal and anime-inspired avatar silhouette on the entry screen.
-- Expanding portal/glitch transition when continuing.
-- Synthesized cyber-click sound for buttons (browser audio permissions apply).
-- Existing MUSIC toggle generates a procedural soundtrack; tap it to enable.
-- No external image, audio file, or library required.
+## Personalization
+The portfolio is personalized for Saran, who enjoys coding and editing and is working toward web development. Edit `home.html` to change the About Me text, project cards, and social links.

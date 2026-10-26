@@ -158,9 +158,3 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     card.addEventListener('pointerleave', () => { card.style.transform = ''; });
   });
 }
-
-// Tiny synthesized cyber-click sound for interactive controls.
-function cyberClickSound(){
-  try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const c=cyberClickSound.ctx||(cyberClickSound.ctx=new AC());if(c.state==='suspended')c.resume();const o=c.createOscillator(),g=c.createGain();o.type='sawtooth';o.frequency.setValueAtTime(520,c.currentTime);o.frequency.exponentialRampToValueAtTime(170,c.currentTime+.09);g.gain.setValueAtTime(.035,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.1);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.11)}catch(e){}
-}
-document.querySelectorAll('button, .jump-button, .project-link, .social-buttons a').forEach(el=>el.addEventListener('click',cyberClickSound));
