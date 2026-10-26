@@ -17,3 +17,11 @@
 Edit `home.html` to update your About Me, project descriptions, and real social/channel links. The soundtrack is generated in the browser using Web Audio, so it needs no external music file and only starts after the visitor presses the music button.
 
 This is a visual portfolio experience, not a real authentication or security system.
+
+
+## Cinematic upgrade
+- CSS-built 3D cyber portal and anime-inspired avatar silhouette on the entry screen.
+- Expanding portal/glitch transition when continuing.
+- Synthesized cyber-click sound for buttons (browser audio permissions apply).
+- Existing MUSIC toggle generates a procedural soundtrack; tap it to enable.
+- No external image, audio file, or library required.
