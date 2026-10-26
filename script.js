@@ -71,24 +71,14 @@ const loadTimer = setInterval(() => {
   }
 }, 210);
 
-const form = document.getElementById('accessForm');
-const input = document.getElementById('accessCode');
-const message = document.getElementById('message');
+const continueButton = document.getElementById('continueButton');
 const transition = document.getElementById('transition');
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  const code = input.value.trim();
-  if (!code) {
-    message.textContent = '>> TYPE A NAME OR CODE TO START YOUR JOURNEY.';
-    message.style.color = 'var(--red)';
-    input.focus();
-    return;
-  }
-  message.textContent = '>> ACCESS GRANTED // WELCOME, ' + code.toUpperCase() + '.';
-  message.style.color = 'var(--green)';
+continueButton.addEventListener('click', () => {
+  continueButton.disabled = true;
+  continueButton.textContent = 'INITIALIZING...';
   transition.classList.add('show');
   transition.setAttribute('aria-hidden', 'false');
-  // Replace "home.html" with the filename of your main website page.
+  // Open the portfolio page after the cinematic transition animation.
   setTimeout(() => {
     window.location.href = 'home.html';
   }, 2200);

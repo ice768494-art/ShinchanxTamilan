@@ -37,15 +37,12 @@
       <div class="loading"><div id="loadBar"></div></div>
       <div class="load-caption"><span id="loadText">INITIALIZING PORTAL</span><b id="loadPercent">00%</b></div>
 
-      <form id="accessForm" class="access-box">
-        <label for="accessCode"><span class="prompt">&gt;</span> ENTER YOUR WORLD</label>
-        <div class="input-row">
-          <span class="input-prefix">root@SXT:~$</span>
-          <input id="accessCode" autocomplete="off" maxlength="40" placeholder="type anything to continue..." aria-label="Enter access code">
-          <button type="submit">ENTER <span>»</span></button>
-        </div>
-        <p id="message" class="message">HINT: THIS IS A GAME-STYLE INTRO — ANY TEXT WORKS.</p>
-      </form>
+      <div class="access-box continue-box">
+        <label><span class="prompt">&gt;</span> PORTAL READY</label>
+        <p class="message">YOUR NEXT ADVENTURE IS ONE CLICK AWAY.</p>
+        <button id="continueButton" class="continue-button" type="button">CLICK HERE TO CONTINUE <span>»</span></button>
+        <p class="message">INITIALIZED // WAITING FOR YOUR COMMAND</p>
+      </div>
       <div class="quick-links"><span>ANIME</span><i>/</i><span>GAMING</span><i>/</i><span>CREATIVE</span><i>/</i><span>MY WORLD</span></div>
     </section>
 
