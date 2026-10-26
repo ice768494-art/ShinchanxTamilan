@@ -83,3 +83,78 @@ continueButton.addEventListener('click', () => {
     window.location.href = 'home.html';
   }, 2200);
 });
+
+// Optional procedural synth soundtrack: no external audio file or download required.
+// Browsers only allow audio after the visitor taps the music control.
+const musicToggle = document.getElementById('musicToggle');
+let audioContext = null, masterGain = null, musicTimer = null, musicStep = 0;
+function playSynthNote() {
+  if (!audioContext || !masterGain || audioContext.state !== 'running') return;
+  const now = audioContext.currentTime;
+  const notes = [55, 82.41, 110, 82.41, 65.41, 98, 130.81, 98];
+  const osc = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+  const filter = audioContext.createBiquadFilter();
+  osc.type = musicStep % 4 === 0 ? 'triangle' : 'sine';
+  osc.frequency.value = notes[musicStep % notes.length];
+  filter.type = 'lowpass'; filter.frequency.value = 420;
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.045, now + 0.08);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.62);
+  osc.connect(filter); filter.connect(gain); gain.connect(masterGain);
+  osc.start(now); osc.stop(now + 0.66);
+  musicStep++;
+}
+async function toggleMusic() {
+  if (!musicToggle) return;
+  try {
+    if (!audioContext) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) { musicToggle.textContent = '♫ AUDIO NOT SUPPORTED'; return; }
+      audioContext = new AudioCtx();
+      masterGain = audioContext.createGain(); masterGain.gain.value = 0.22; masterGain.connect(audioContext.destination);
+    }
+    if (musicTimer) {
+      clearInterval(musicTimer); musicTimer = null;
+      masterGain.gain.setTargetAtTime(0, audioContext.currentTime, 0.08);
+      musicToggle.textContent = '♫ MUSIC: OFF'; musicToggle.classList.remove('is-playing'); musicToggle.setAttribute('aria-pressed', 'false');
+    } else {
+      await audioContext.resume();
+      masterGain.gain.setTargetAtTime(0.22, audioContext.currentTime, 0.12);
+      playSynthNote(); musicTimer = setInterval(playSynthNote, 460);
+      musicToggle.textContent = '♫ MUSIC: ON'; musicToggle.classList.add('is-playing'); musicToggle.setAttribute('aria-pressed', 'true');
+    }
+    musicToggle.classList.remove('tap-flash'); void musicToggle.offsetWidth; musicToggle.classList.add('tap-flash');
+  } catch (err) { musicToggle.textContent = '♫ TAP TO ENABLE'; }
+}
+if (musicToggle) musicToggle.addEventListener('click', toggleMusic);
+
+// Tactile feedback for every button/link: ripple + quick neon flash.
+document.querySelectorAll('button, .jump-button, .project-link, .social-buttons a, .logo, .socials span').forEach((control) => {
+  control.classList.add('button-ripple');
+  control.addEventListener('click', (event) => {
+    const rect = control.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 1.4;
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple-dot';
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = ((event.clientX || rect.left + rect.width / 2) - rect.left - size / 2) + 'px';
+    ripple.style.top = ((event.clientY || rect.top + rect.height / 2) - rect.top - size / 2) + 'px';
+    control.appendChild(ripple);
+    control.classList.remove('tap-flash'); void control.offsetWidth; control.classList.add('tap-flash');
+    setTimeout(() => ripple.remove(), 700);
+  });
+});
+
+// Gentle 3D tilt on project cards for pointer devices; disabled on touch screens.
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(700px) rotateY(${x * 7}deg) rotateX(${-y * 7}deg) translateY(-3px)`;
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
+}

@@ -1,21 +1,19 @@
-# SHINCHANxTAMILAN — Hacker/Game Entry Screen
+# SHINCHANxTAMILAN Hacker Portfolio
 
-## Files
-- `index.html` — entry screen
-- `style.css` — neon hacker theme and responsive layout
-- `script.js` — Matrix-style falling code, terminal boot logs, loading bar, clock, and transition
+## Run it
+1. Extract the ZIP into a single folder.
+2. Open `index.html` for the animated hacker entry.
+3. Press **CLICK HERE TO CONTINUE** to open `home.html`.
 
-## Try it
-Open `index.html` in a browser. Type any text into the access field and press ENTER.
+## Included
+- Matrix-style falling code and terminal boot sequence
+- CSS 3D rotating SXT hologram intro
+- Optional synthesized cyber soundtrack (tap **MUSIC: OFF** to enable; tap again to stop)
+- Neon ripple/flash effects on buttons and links
+- 3D hover tilt on project cards on desktop
+- About Me, Projects, Social links and intro replay sections
 
-## Connect it to your actual website
-The form redirects to `home.html` after the access animation. Put your main website page in this folder and name it `home.html`, or edit this line near the end of `script.js`:
+## Customize
+Edit `home.html` to update your About Me, project descriptions, and real social/channel links. The soundtrack is generated in the browser using Web Audio, so it needs no external music file and only starts after the visitor presses the music button.
 
-`window.location.href = 'home.html';`
-
-If your main site is `main.html`, change it to `window.location.href = 'main.html';`.
-
-## Notes
-- This is a visual game-style entrance, not real authentication or hacking.
-- Any non-empty text works as the entry code. Do not use this as a real login/security system.
-- Google Fonts are loaded from the internet; fallback fonts are included.
+This is a visual portfolio experience, not a real authentication or security system.
